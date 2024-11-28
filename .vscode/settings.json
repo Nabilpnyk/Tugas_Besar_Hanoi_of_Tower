@@ -1,4 +1,7 @@
 {
+  "window.zoomLevel": 0.4,
+  "workbench.colorTheme": "Noctis Azureus",
+  "workbench.iconTheme": "vscode-icons",
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
