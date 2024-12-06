@@ -9,23 +9,23 @@ float Scoring(int Langkah, int Kecepatan, int choice){
 	
 	switch (choice){
 		case 0:
-			scoreLangkah = (Langkah/6 * 0.1);
-			scoreKecepatan = (45/Kecepatan * 0.1);
+			scoreLangkah = (Langkah/6);
+			scoreKecepatan = (45/Kecepatan);
 			break;
 		case 1:
-			scoreLangkah = (Langkah/4 * 0.1);
-			scoreKecepatan = (93/Kecepatan * 0.1);
+			scoreLangkah = (Langkah/4);
+			scoreKecepatan = (93/Kecepatan);
 			break;
 		case 2:
-			scoreLangkah = (Langkah/2 * 0.1);
-			scoreKecepatan = (189/Kecepatan * 0.1);
+			scoreLangkah = (Langkah/2);
+			scoreKecepatan = (189/Kecepatan);
 			break;
 		case 3:	
-			scoreLangkah = (Langkah/1 * 0.1);
-			scoreKecepatan = (381/Kecepatan * 0.1);
+			scoreLangkah = (Langkah/1);
+			scoreKecepatan = (381/Kecepatan);
 			break;
 	}
 	totalScore = (bobotLangkah * scoreLangkah) + (bobotKecepatan * scoreKecepatan);
 	
 	return totalScore;
-}
+}\
