@@ -11,20 +11,18 @@ void PlayGame();
 
 void LeaderBoard();
 
-void Level();
-
 //Score
 void ReadText(FILE *fp);
 
 
 //Gameplay
-void SetMudah();
+void Easy();
 
-void SetSedang();
+void Medium();
 
-void SetSulit();
+void Hard();
 
-void SetLegend();
+void Legend();
 
 void Latihan();
 
@@ -42,8 +40,6 @@ extern CHAR_INFO *CC[15];
 
 extern SMALL_RECT Tf1, Tf2 , Tf3;
 
-void Hapus(HANDLE Out, int m);
-
 void clearLine(int y);
 
 void gotoxy(int x, int y);
@@ -58,7 +54,6 @@ void SetSmallRect(int n);
 
 void SetChar();
 
-void SetBatang(int TA[4][7], HANDLE Out, int n);
 
 //============================================ File Manipulation.c ====================================================
 
