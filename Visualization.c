@@ -2,13 +2,13 @@
 
 void SizeRect()
 {
-    Size[0] = (COORD){3, 1};
-    Size[1] = (COORD){5, 1};
-    Size[2] = (COORD){7, 1};
-    Size[3] = (COORD){9, 1};
-    Size[4] = (COORD){11, 1};
-    Size[5] = (COORD){13, 1};
-    Size[6] = (COORD){15, 1};
+	Size[0] = (COORD){3, 1};
+	Size[1] = (COORD){5, 1};
+	Size[2] = (COORD){7, 1};
+	Size[3] = (COORD){9, 1};
+	Size[4] = (COORD){11, 1};
+	Size[5] = (COORD){13, 1};
+	Size[6] = (COORD){15, 1};
 	Size[7] = (COORD){1, 10};
 	Size[8] = (COORD){57, 1};
 }
@@ -157,8 +157,9 @@ void SetChar()
 void clearLine(int y)
 {
 	for(i=0;i<y;i++)
-    printf(" ");
-}
+		{
+		printf(" ");
+		}
 
 void GameOver()
 {
@@ -183,7 +184,6 @@ void GameOver()
 
 void Win()
 {
-	PlaySound("Win.wav", NULL, SND_FILENAME | SND_ASYNC);
 	system("cls");
 	gotoxy(35,6);printf("%c%c    %c%c     %c%c%c%c    %c%c    %c%c  %c%c%c  %c%c%c  %c%c%c\n",219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219);
 	gotoxy(35,7);printf(" %c%c  %c%c     %c%c  %c%c   %c%c    %c%c  %c%c%c  %c%c%c  %c%c%c\n",219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219);
@@ -198,6 +198,7 @@ void Win()
 	gotoxy(35,16);printf("%c%c   %c%c%c%c   %c%c  %c%c  %c%c  %c%c %c%c\n",219,219,219,219,219,219,219,219,219,219,219,219,219,219,219);
 	gotoxy(35,17);printf(" %c%c %c%c  %c%c %c%c   %c%c  %c%c   %c%c%c%c  %c%c%c  %c%c%c  %c%c%c\n",219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219);
 	gotoxy(35,18);printf("  %c%c%c    %c%c%c    %c%c  %c%c    %c%c%c  %c%c%c  %c%c%c  %c%c%c\n",219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219);
+	PlaySound("Win.wav", NULL, SND_FILENAME | SND_ASYNC);
 
-	Sleep(5000);
+	Sleep(500);
 }
