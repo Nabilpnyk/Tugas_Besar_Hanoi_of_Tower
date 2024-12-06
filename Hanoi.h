@@ -3,16 +3,8 @@
 #include <stdio.h>
 #include <windows.h>
 
-
+//=========================================== GamePlay.c ===============================================
 HANDLE Out();
-
-///////////////////////////////////////////////////////////////////////////////
-//Player
-//char* GetNama(Player *P);
-//
-//int GetScore(Player *P);
-//
-//void Nama(Player *P);
 
 //Menu
 void PlayGame();
@@ -38,7 +30,7 @@ void Latihan();
 
 void Pindah(int F, int T, int TA[4][7], int m);
 
-//Visual
+//================================================ Visual.c ===================================================================
 
 extern COORD O;
 
@@ -68,7 +60,7 @@ void SetChar();
 
 void SetBatang(int TA[4][7], HANDLE Out, int n);
 
-
+//============================================ File Manipulation.c ====================================================
 
 
 
