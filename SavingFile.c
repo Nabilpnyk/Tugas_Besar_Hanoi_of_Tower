@@ -1,7 +1,7 @@
 #include "Hanoi.h"
 
 //================= Saving File ===================
-void inputData(char nama[], int detik, int langkah, int choice){
+void inputData(char nama[], int detik, int langkah, int Pilihan){
 	Player x;
 	Player y[50];
 	int i, target = 0 ,n = 0;
@@ -19,8 +19,8 @@ void inputData(char nama[], int detik, int langkah, int choice){
 		x.Detik = detik;
 	}
 	x.SisaLangkah = langkah;
-	x.Level = choice;
-	x.Score = Scoring(langkah, detik, choice);
+	x.Level = Pilihan;
+	x.Score = Scoring(langkah, detik, Pilihan);
 	
 	FILE *file = fopen(NAMA_FILE,"rb");
 	if (file == NULL)
@@ -69,40 +69,39 @@ void inputData(char nama[], int detik, int langkah, int choice){
 void tampilData(Player y[50], int n)
 {
 	int i;
-	gotoxy(20,11);printf("================================ Leaderboard ================================");
-	gotoxy(20,12);printf("=============================================================================");
-	gotoxy(20,13);printf("| No | Level  | Nama %-44s | Waktu | Langkah | Score |\n", " ");
-	gotoxy(20,14);printf("=============================================================================");
+	gotoxy(14,11);printf("======================================== Leaderboard ========================================");
+	gotoxy(14,12);printf("=============================================================================================");
+	gotoxy(14,13);printf("| No | Nama %-44s | Waktu | Langkah | Score | Level  |\n", " ");
+	gotoxy(14,14);printf("=============================================================================================");
 	for (i = 0; i < n; i++)
 	{
 		switch(y[i].Level){
 			case 0:
-				gotoxy(20,15+(i*2));printf("| %-2d |  Easy  |%-50s | %02d:%02d |   %2d    | %.3f |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
-	    		gotoxy(20,16+(i*2));printf("=============================================================================");
+				gotoxy(14,15+(i*2));printf("| %-2d |%-50s | %02d:%02d |   %2d    | %.3f |  Easy  |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
+	    		gotoxy(14,16+(i*2));printf("=============================================================================================");
 	    		break;
 	    	case 1:
-	    		gotoxy(20,15+(i*2));printf("| %-2d | Medium |%-50s | %02d:%02d |   %2d    | %.3f |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
-	    		gotoxy(20,16+(i*2));printf("=============================================================================");
+	    		gotoxy(14,15+(i*2));printf("| %-2d |%-50s | %02d:%02d |   %2d    | %.3f | Medium |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
+	    		gotoxy(14,16+(i*2));printf("=============================================================================================");
 	    		break;
 	    	case 2:
-	    		gotoxy(20,15+(i*2));printf("| %-2d |  Hard  |%-50s | %02d:%02d |   %2d    | %.3f |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
-	    		gotoxy(20,16+(i*2));printf("=============================================================================");
+	    		gotoxy(14,15+(i*2));printf("| %-2d |%-50s | %02d:%02d |   %2d    | %.3f |  Hard  |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
+	    		gotoxy(14,16+(i*2));printf("=============================================================================");
 	    		break;
 	    	case 3:
-	    		gotoxy(20,15+(i*2));printf("| %-2d | Legend |%-50s | %02d:%02d |   %2d    | %.3f |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
-	    		gotoxy(20,16+(i*2));printf("=============================================================================");
-	    		break;
-	    		
+	    		gotoxy(14,15+(i*2));printf("| %-2d |%-50s | %02d:%02d |   %2d    | %.3f | Legend |", i + 1, y[i].Nama,y[i].Menit, y[i].Detik, y[i].SisaLangkah,y[i].Score);
+	    		gotoxy(14,16+(i*2));printf("=============================================================================");
+	    		break;	
 		}
 	}
 }
 
-void urutkan(Player a[], int n, int choice)
+void urutkanData(Player a[], int n, int Pilihan)
 {
     int i, j;
     Player temp;
 
-	switch(choice){
+	switch(Pilihan){
 
 	case 1:
 	    for (i = 0; i < n - 1; i++) {
@@ -145,5 +144,3 @@ void urutkan(Player a[], int n, int choice)
 	}
 	tampilData(a,n);
 }
-
-
