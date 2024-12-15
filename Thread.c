@@ -1,39 +1,44 @@
 #include "Hanoi.h"
 
+//============================ THREAD =================================
+
 volatile BOOL stopThread = FALSE;  // Flag untuk menghentikan thread
 DWORD ThreadD;
-HANDLE ThreadH;
+HANDLE ThreadH;    
 
-//============================ THREAD =================================
 void HitungWaktu(short *waktu) {
     int hour = 0, minute = 0, second = 0;  // Menginisialisasi waktu mulai di 00:00:00
-//    PlaySound("ZAMRUD KHATULISTIWA.wav", NULL, SND_FILENAME | SND_ASYNC);
-//	sndPlaySound("ZAMRUD KHATULISTIWA.wav", SND_FILENAME | SND_ASYNC | SND_LOOP );
     stopThread = FALSE;
+    DWORD Tunggu;
     while (!stopThread) {
         // Thread melakukan pekerjaan sampai flag stopThread diset menjadi TRUE
 	        // Menampilkan waktu dalam format jam:menit:detik
-//	        gotoxy(41,6);CetakWaktu(&hour, &minute, &second);
-	        gotoxy(35,6);printf("Time : %02d:%02d:%02d ", hour, minute, second);
-	        // Menunggu selama 1 detik
-	        Sleep(1000);  // Sleep membutuhkan waktu dalam milidetik, jadi 1000 ms = 1 detik
-	        
-	        // Menghitung detik
-	        second++;
-	        if (second == 60) {
-	            second = 0;
-	            minute++;
-	            if (minute == 60) {
-	                minute = 0;
-	                hour++;
-	                if (hour == 24) {
-	                    hour = 0;  // Reset jam ke 00 setelah 23:59:59
-	                }
-	            }
+	        Tunggu = WaitForSingleObject(Mutex, INFINITE);
+	        if (Tunggu == WAIT_OBJECT_0)
+	        {
+		        gotoxy(35,7);printf("Time : %02d:%02d:%02d ", hour, minute, second);
+				ReleaseMutex(Mutex);
 			}
+		        // Menunggu selama 1 detik
+		        Sleep(1000);  // Sleep membutuhkan waktu dalam milidetik, jadi 1000 ms = 1 detik
+		        gotoxy(35,7);clearLine(100);
+		        second++;
+		        if (second == 60)
+				{
+		            second = 0;
+		            minute++;
+		            if (minute == 60) {
+		                minute = 0;
+		                hour++;
+		                if (hour == 24) {
+		                    hour = 0;  // Reset jam ke 00 setelah 23:59:59
+		                }
+		            }
+				}
 	}
 	*waktu = hour * 3600 + minute * 60 + second - 1;
 }
+
 
 //Mulai Game
 short threadWaktu(bool kondisi)
@@ -57,4 +62,16 @@ short threadWaktu(bool kondisi)
     CloseHandle(ThreadH);
 	
     return waktu;
+}
+
+void MUTEX(bool mutexb)
+{
+	if (mutexb)
+	{
+		Mutex = CreateMutex(NULL, FALSE, NULL);
+	}
+	else
+	{
+		CloseHandle(Mutex);
+	}
 }
