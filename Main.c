@@ -34,13 +34,13 @@ int main(int argc, char *argv[])
 
 	            if (key == 72) {  // Panah atas
 	                n = (n - 1 + 5) % 5;
-	            	Beep(1200,100);
+	            	Beep(1200,150);
 	            } else if (key == 80) {  // Panah bawah
 	                n = (n + 1) % 5;
-	                Beep(1200,100);
+	                Beep(1200,150);
 	            }
 	        } else if (key == 13) {  // Enter
-				Beep(600,100);
+				Beep(600,150);
 	            break;
 	        }
 	    }
