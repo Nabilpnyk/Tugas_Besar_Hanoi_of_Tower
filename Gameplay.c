@@ -150,13 +150,145 @@ void LeaderBoard()
     
 }
 
-bool HowToPlay(int A)
+bool HowToPlay(int Cakram)
 {
 	system("cls");
 	gotoxy(10, 4);	printf("Mohon baca dengan seksama sebelum mulai permainan!");
 	gotoxy(10, 5);	printf("Level : ");
-	
+
+	int A = Cakram;
 	char B[7];
+	switch (A) {
+		case 0 :
+			printf("Easy");
+			strcpy(B, "keempat");
+			break;
+		case 1 :
+			printf("Medium");
+			strcpy(B, "kelima");
+			break;
+		case 2 :
+			printf("Hard");
+			strcpy(B, "keenam");
+			break;
+		case 3 :
+			printf("Legend");
+			strcpy(B, "ketujuh");
+			break;
+		case 4 :
+			printf("III Cakram");
+			strcpy(B, "ketiga");
+			A = A - 5;
+			break;
+		case 5 :
+			printf("IV Cakram");
+			strcpy(B, "keempat");
+			A = A - 5;
+			break;
+		case 6 :
+			printf("V Cakram");
+			strcpy(B, "kelima");
+			A = A - 5;
+			break;
+		case 7 :
+			printf("VI Cakram");
+			strcpy(B, "keenam");
+			A = A - 5;
+			break;
+		case 8 :
+			printf("VII Cakram");
+			strcpy(B, "ketujuh");
+			A = A - 5;
+			break;
+	}
+
+	if (Cakram > 3) {
+	gotoxy(10, 6);	printf("1. 	Tujuan Permainan");
+	gotoxy(10, 7);	printf("	Anda ditugaskan untuk memindahkan %s cakram yang tersusun secara berurut di tiang paling", B);
+	gotoxy(10, 8);	printf("	kiri ke tiang paling kanan.");
+
+	gotoxy(10, 10);	printf("2. 	Batas Langkah");
+	gotoxy(10, 11);	printf("	Langkah minimal untuk menyelesaikan permainan adalah %d langkah." , (int) pow(2, A + 4) - 1);
+
+	gotoxy(10, 13);	printf("3. 	Aturan Main");
+	gotoxy(10, 14);	printf("	Hanya satu cakram yang dapat dipindahkan dalam satu langkah. Cakram tidak boleh ditumpuk di");
+	gotoxy(10, 15);	printf("	atas cakram yang lebih kecil.");
+	} else {
+		gotoxy(10, 6);	printf("1. 	Tujuan Permainan");
+		gotoxy(10, 7);	printf("	Anda ditugaskan untuk memindahkan %s cakram yang tersusun secara berurut di tiang paling", B);
+		gotoxy(10, 8);	printf("	kiri ke tiang paling kanan.");
+
+		gotoxy(10, 10);	printf("2. 	Batas Langkah");
+		gotoxy(10, 11);	printf("	Langkah minimal untuk menyelesaikan permainan adalah %d langkah. Anda memiliki batas maksimal " , (int) pow(2, A + 4) - 1);
+		gotoxy(10, 12);	printf("	%d langkah untuk menyelesaikan permainan.", (int) pow(2, A + 4) + 2 * ( 3 - A) - 1);
+
+		gotoxy(10, 14);	printf("3. 	Aturan Main");
+		gotoxy(10, 15);	printf("	Hanya satu cakram yang dapat dipindahkan dalam satu langkah. Cakram tidak boleh ditumpuk di");
+		gotoxy(10, 16);	printf("	atas cakram yang lebih kecil.");
+
+		gotoxy(10, 18);	printf("4.	Status Menang dan Kalah");
+		gotoxy(10, 19);	printf("	Anda dinyatakan menang apabila berhasil memindahkan %s cakram ke tiang paling kanan ", B);
+		gotoxy(10, 20);	printf("	secara berurutan dengan langkah kurang dari sama dengan %d. Sebaliknya, anda akan dinyatakan", (int) pow(2, A + 4) + 2 * ( 3 - A) - 1);
+		gotoxy(10, 21); printf("	kalah apabila langkah telah melebihi %d sebelum menyelesaikan permainan.", (int) pow(2, A + 4) + 2 * ( 3 - A) - 1);
+
+		gotoxy(10, 23);	printf("5.	Sistem Skor");
+		gotoxy(10, 24);	printf("	Skor ditentukan berdasarkan waktu. Pemain yang menyelesaikan permainan dengan waktu tercepat");
+		gotoxy(10, 25); printf("	akan menjadi pemain teratas dalam papan skor.");
+	}
+
+	gotoxy(48, 28); printf("Press enter to continue!");
+	gotoxy(44, 29); printf("Press esc to go back to Menu!");
+
+	int x;
+
+	while (1) {
+		x = getch();
+		if (x == '\r') { //Jika character input player sama dengan Enter
+			system("cls");
+			break;
+		}
+		if (x == 27) { //Jika character input player sama dengan ESC
+			system("cls");
+			return true;
+		}
+	}
+
+	gotoxy(119, 29);
+	system("cls");
+
+	gotoxy(10, 6);	printf("Informasi umum");
+	gotoxy(10, 7);	printf("- Tiang yang paling kiri adalah tiang 1 dan tiang paling kanan adalah tiang 3");
+	gotoxy(10, 8);	printf("- Input nomor tiang hanya ada 3, yakni 1, 2, dan 3, yang masing-masing mewakili tiang 1, tiang 2");
+	gotoxy(10, 9);  printf("  dan tiang 3.");
+
+	gotoxy(10, 11);	printf("Petunjuk penggunaan");
+	gotoxy(10, 12);	printf("- Masukkan nama anda dengan tidak lebih dari 50 karakter kemudian tekan enter");
+	gotoxy(10, 13);	printf("- untuk melakukan pemindahan, masukkan tiang asal, setelah itu masukkan tiang tujuan");
+	gotoxy(10, 14);	printf("- Apabila nomor tiang yang dimasukkan tidak sesuai, maka akan muncul suara beep sebagai peringatan");
+	gotoxy(10, 15);	printf("- Sebelum menekan enter, anda bisa memastikan apakah tiang asal dan tujuan sesuai  atau tidak.");
+	gotoxy(10, 16);	printf("  Apabila tidak sesuai, maka anda bisa menekan tombol selain tombol enter dan anda bisa memasukkan ");
+	gotoxy(10, 17);	printf("  ulang tiang asal dan tujuan. ");
+	gotoxy(10, 18);	printf("- Apabila sudah sesuai, tekan enter");
+	gotoxy(10, 19);	printf("- Apabila pemindahan tidak berhasil, maka akan keluar suara beep dan anda bisa memasukkan ulang");
+	gotoxy(10, 20);	printf("  tiang asal dan tujuan");
+	gotoxy(10, 21);	printf("- Lakukan langkah di atas sampai permainan selesai (game win/game over). Setelah itu, anda akan");
+	gotoxy(10, 22);	printf("  diarahkan kembali ke main menu");
+
+	gotoxy(48, 28); printf("Press enter to continue!");
+	gotoxy(44, 29); printf("Press esc to go back to Menu!");
+
+	while (1) {
+		x = getch();
+		if (x == '\r') { //Jika character input player sama dengan Enter
+			system("cls");
+			return false;
+		}
+		if (x == 27) { //Jika character input player sama dengan ESC
+			system("cls");
+			return true;
+		}
+	}
+}
 	switch (A) {
 		case 0 :
 			printf("Easy");
@@ -457,12 +589,13 @@ void Permainan(char Nama[50], int Cakram, int Langkah, int Pilihan)
 		}
 
 		Pindah(Asal-1,Tujuan-1,Cakram, Tiang,  Out(), &Check);
+		if(Check)Move--;
 		if(Tiang[2][0]==0)
 		{
 			Waktu = threadWaktu(false);
 			break;
 		}
-		if(Check)Move--;
+		
 		if(Move <= 0)
 		{
 			Waktu = threadWaktu(false);
